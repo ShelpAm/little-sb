@@ -1,7 +1,7 @@
 #include "battle.h"
 #include "chrono.h"
 
-Battle::Battle(std::size_t const id,
+Battle::Battle(std::uint64_t const id,
                std::array<player::Player *, 2> const players,
                Session_service *const session_service)
     : _id{id}, _players{players}, _session_service{session_service}
@@ -40,7 +40,7 @@ void Battle::update(Duration delta)
   }
 }
 
-auto Battle::id() const -> std::size_t
+auto Battle::id() const -> std::uint64_t
 {
   return _id;
 }
