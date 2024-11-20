@@ -1,7 +1,11 @@
 #pragma once
 
 #include <GLFW/glfw3.h>
+
+#ifndef __gl_h_
 #include <glad/gl.h>
+#endif
+
 #include <spdlog/spdlog.h>
 
 void error_callback(int error, const char *description);
