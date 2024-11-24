@@ -57,7 +57,9 @@ void Battle::stop(Stop_cause cause)
     _session_service->push_event(_players[0]->name(), game_end);
 
     Event message{"message"};
-    message.add_arg("Someone's health has dropped to 0.");
+    message.add_arg(std::format("{} lost.", _players[0]->health() == 0
+                                                ? _players[0]->name() + " has"
+                                                : "You have"));
     _session_service->push_event(_players[1]->name(), message);
     break;
   }
