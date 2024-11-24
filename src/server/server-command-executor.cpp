@@ -91,6 +91,6 @@ auto server_command_executors::Resurrect::execute(std::string from,
                                                   Command const &command)
     -> Event
 {
-  server()->_players.at(from)->heal(little_sb::random::uniform(2000, 3000));
+  server()->_players.at(from)->heal(little_sb::random::uniform(500, 1000));
   return Event{"ok"};
 }
