@@ -80,7 +80,7 @@ auto Escape_server_command_executor::execute(std::string /* from */,
                                              Command const &command) -> Event
 {
   auto const game_id{command.get_param<std::size_t>("game-id")};
-  server()->_games.at(game_id).stop(Stop_cause::escaping);
+  server()->_battles.at(game_id).stop(Stop_cause::escaping);
   return Event{"ok"};
 }
 server_command_executors::Resurrect::Resurrect(Server *server)

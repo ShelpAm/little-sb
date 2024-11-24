@@ -1,5 +1,6 @@
 #pragma once
 
+#include "battle-fwd.h"
 #include "chrono.h"
 #include "player.h"
 #include "server/session-service.h"

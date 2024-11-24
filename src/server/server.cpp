@@ -63,8 +63,9 @@ void Server::remove_player(std::string const &player_name)
 
 auto Server::allocate_game(std::array<Player *, 2> players) -> Battle &
 {
-  auto const id{_games.empty() ? std::uint64_t{} : _games.rbegin()->first + 1};
-  return _games.try_emplace(id, Battle{id, players, &_session_service})
+  auto const id{_battles.empty() ? std::uint64_t{}
+                                 : _battles.rbegin()->first + 1};
+  return _battles.try_emplace(id, Battle{id, players, &_session_service})
       .first->second;
 }
 
@@ -78,7 +79,7 @@ void Server::run_main_game_loop()
 
     if (auto const now{std::chrono::steady_clock::now()};
         now >= last_update + tick_interval()) {
-      for (auto &[_, game] : _games) {
+      for (auto &[_, game] : _battles) {
         game.update(now - last_update);
       }
 

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "battle-fwd.h"
 #include "game-map.h"
 #include "item/item.h"
 #include "packet.h"
@@ -8,7 +9,6 @@
 #include <asio.hpp>
 #include <map>
 
-class Battle;
 class Command;
 class Player;
 struct Packet;
@@ -50,7 +50,7 @@ private:
 
   Game_map _game_map;
 
-  std::map<std::uint64_t, Battle> _games;
+  std::map<Battle_id, Battle> _battles;
   std::map<std::string, item::Item_info> _store_items;
   std::map<std::string, std::unique_ptr<Player>> _players;
   std::map<std::string, std::unique_ptr<Server_command_executor>>
