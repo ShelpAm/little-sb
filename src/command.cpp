@@ -1,4 +1,6 @@
 #include "command.h"
+#include <chrono>
+#include <format>
 #include <spdlog/spdlog.h>
 
 void to_json(json &j, const Command &cmd)
