@@ -50,11 +50,14 @@ void Application::tick()
 
 void Application::poll_events()
 {
-  // TODO(shelpam): comments needed—why should we restart here?
-  _io_context.poll();
+  // If `_io_context.stopped()` returns `true`, any call to `_io_context.poll()`
+  // (the same as poll_one run run_one) won't do anything at all. So, we should
+  // restart them.
   if (_io_context.stopped()) {
     _io_context.restart();
   }
+  _io_context.poll();
+
   _window.poll_events();
 }
 

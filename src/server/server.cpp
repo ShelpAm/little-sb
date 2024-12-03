@@ -76,6 +76,8 @@ void Server::run_main_game_loop()
 
   auto last_update{std::chrono::steady_clock::now()};
   while (!_main_game_loop_should_stop) {
+    // Since the server keeps accepting connections, the io_context will never
+    // runs out of its work, and will never stop. Thus we don't have to restart
     _io_context.poll();
 
     auto const now{std::chrono::steady_clock::now()};
