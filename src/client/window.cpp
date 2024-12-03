@@ -19,16 +19,16 @@ void key_callback(GLFWwindow *window, int key, int scancode, int action,
 
 void Window::initialize()
 {
+  glfwSetErrorCallback(error_callback);
+
   if (glfwInit() == 0) {
     // Initialization failed
-    throw std::runtime_error{"GLFW initialization failed"};
+    throw std::runtime_error{"Failed to initialize GLFW"};
   }
 
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
-  glfwSetErrorCallback(error_callback);
 }
 
 void Window::deinitialize()
